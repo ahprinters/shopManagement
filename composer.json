@@ -1,0 +1,12 @@
+{
+    "name": "shop/management",
+    "description": "Shop Management System",
+    "autoload": {
+        "psr-4": {
+            "Shop\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.4"
+    }
+} 
