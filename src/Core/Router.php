@@ -13,8 +13,17 @@ class Router {
     }
 
     public function resolve() {
-        $path = $_SERVER['REQUEST_URI'] ?? '/';
+        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $method = $_SERVER['REQUEST_METHOD'];
+        
+        // Remove trailing slashes
+        $path = rtrim($path, '/');
+        
+        // If path is empty, set it to /
+        if (empty($path)) {
+            $path = '/';
+        }
+
         $callback = $this->routes[$method][$path] ?? null;
 
         if ($callback === null) {

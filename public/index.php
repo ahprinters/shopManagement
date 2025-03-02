@@ -12,9 +12,13 @@ $router->get('/', function() {
     exit;
 });
 
+// Product routes
 $router->get('/products', [ProductController::class, 'index']);
 $router->get('/products/create', [ProductController::class, 'create']);
 $router->post('/products/create', [ProductController::class, 'create']);
+$router->get('/products/edit/{id}', [ProductController::class, 'edit']);
+$router->post('/products/edit/{id}', [ProductController::class, 'update']);
+$router->get('/products/delete/{id}', [ProductController::class, 'delete']);
 
 // Resolve the current route
 $router->resolve(); 
